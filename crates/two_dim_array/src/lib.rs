@@ -17,7 +17,7 @@ use std::slice::SliceIndex;
 /// not possible. Instead use `get`, `get_unchecked` and
 /// `get_panic`, the latter is equivalent to [] indexing.
 /// Each has an `_mut` equivalent. All accept a column
-/// index and a row index or slice which guarantees contiguous
+/// index or slice and a row index which guarantees contiguous
 /// slicing.
 ///
 /// # Layout
@@ -205,8 +205,8 @@ impl<'a, T> TwoDimensionalArray<'a, T> {
     ///
     /// - If given a position, returns a reference to the element at that
     ///   position or `None` if out of bounds.
-    /// - If given a range, returns the subslice corresponding to that range,
-    ///   or `None` if out of bounds.
+    /// - If given a column range, returns the row subslice corresponding to
+    ///   that range, or `None` if out of bounds.
     ///
     /// See `get_panic` for an equivalent to [] access, which does not return
     /// an option, but does bounds checking and `get_unchecked` which skips
